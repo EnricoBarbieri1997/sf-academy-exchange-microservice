@@ -18,9 +18,8 @@ services:
   web:
     build:
       context: ./Web
-      dockerfile: .
+      dockerfile: ./Dockerfile
     volumes:
-      - ./Web/.next:/usr/src/app/.next
       - ./Web/pages:/usr/src/app/pages
       - ./Web/public:/usr/src/app/public
       - ./Web/styles:/usr/src/app/styles

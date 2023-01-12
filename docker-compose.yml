@@ -2,13 +2,22 @@ version: '3.8'
 services:
   api:
     build:
-      context: ./ApiGateway
-      dockerfile: .
+      context: .
+      dockerfile: BuildingBlocks/Docker/Dockerfile.service
+      args:
+        port: 8080
+        service_path: ApiGateway
   exchange:
     build:
-      context: ./Services/Exchange
-      dockerfile: .
+      context: .
+      dockerfile: BuildingBlocks/Docker/Dockerfile.service
+      args:
+        port: 9000
+        service_path: Services/Exchange
   users:
     build:
-      context: ./Services/Users
-      dockerfile: .
+      context: .
+      dockerfile: BuildingBlocks/Docker/Dockerfile.service
+      args:
+        port: 9001
+        service_path: Services/Users
