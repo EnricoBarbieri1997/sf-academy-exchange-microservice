@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  api:
+    build:
+      context: ./ApiGateway
+      dockerfile: .
+  exchange:
+    build:
+      context: ./Services/Exchange
+      dockerfile: .
+  users:
+    build:
+      context: ./Services/Users
+      dockerfile: .

@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  api:
+    volumes:
+      - ./ApiGateway/src:/usr/src/app/src
+      - ./ApiGateway/index.ts:/usr/src/app/index.ts
+    command: ["npm", "run", "start"]
+  exchange:
+    volumes:
+      - ./Services/Exchange/src:/usr/src/app/src
+      - ./Services/Exchange/index.ts:/usr/src/app/index.ts
+    command: ["npm", "run", "start"]
+  users:
+    volumes:
+      - ./Services/Users/src:/usr/src/app/src
+      - ./Services/Users/index.ts:/usr/src/app/index.ts
+    command: ["npm", "run", "start"]
+  web:
+    build:
+      context: ./Web
+      dockerfile: .
+    volumes:
+      - ./Web/.next:/usr/src/app/.next
+      - ./Web/pages:/usr/src/app/pages
+      - ./Web/public:/usr/src/app/public
+      - ./Web/styles:/usr/src/app/styles
+    command: ["npm", "run", "dev"]
+    ports:
+      - 3000:3000
