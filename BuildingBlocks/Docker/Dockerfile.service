@@ -3,6 +3,7 @@ FROM node:18
 ARG service_path=.
 ARG port
 
+ENV PORT=$port
 ENV GRPC_PATH=./gRPC
 ENV PROTO_PATH="$GRPC_PATH/Protos"
 ENV TYPESCRIPT_TYPES_PATH="$GRPC_PATH/Typescript"
