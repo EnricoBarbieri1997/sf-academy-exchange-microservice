@@ -32,7 +32,8 @@ services:
     networks:
       - external
   database:
-    image: postgres
+    build:
+      dockerfile: ./BuildingBlocks/Docker/Dockerfile.database
     volumes:
       - ./DevTemp/Database:/var/lib/postgresql/data
     env_file:

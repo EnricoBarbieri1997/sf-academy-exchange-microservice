@@ -1,0 +1,3 @@
+FROM postgres
+
+ENTRYPOINT [ "bash", "-c", "POSTGRES_USER=$DATABASE_USER POSTGRES_PASSWORD=$DATABASE_PASSWORD docker-entrypoint.sh postgres" ]
