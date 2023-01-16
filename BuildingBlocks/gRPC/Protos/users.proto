@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package exchange;
+
+service Users {
+	rpc SignUp(SignUpData) returns (OperationOutcome) {}
+	rpc Login(LoginData) returns (LoginResponse) {}
+	rpc Deposit(Amount) returns (OperationOutcome) {}
+	rpc Withdraw(SignUpData) returns (OperationOutcome) {}
+	rpc Buy(SignUpData) returns (OperationOutcome) {}
+	rpc ListTransactions(TransactionListFilters) returns (TransactionList) {}
+}
+
+message UserData {
+	string name = 3;
+	string iban = 4;
+}
+
+message OperationOutcome {
+	bool success = 1;
+}
+
+message LoginData {
+	string email = 1;
+	string password = 2;
+}
+
+message LoginResponse {
+	string token = 1;
+}
+
+message SignUpData {
+	LoginData login = 1;
+	UserData user = 2;
+}
+
+message Amount {
+	float value = 1;
+	string currency = 2;
+}
+
+message BuyData {
+	Amount from = 1;
+	string to = 2;
+}
+
+message TransactionListFilters {
+	string date = 1;
+	string currency = 2;
+}
+
+message TransactionList {
+	repeated BuyData transactions = 1;
+}
