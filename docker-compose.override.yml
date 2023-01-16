@@ -5,24 +5,19 @@ services:
       - ./ApiGateway/src:/usr/src/app/src
       - ./ApiGateway/index.ts:/usr/src/app/index.ts
     command: ["npm", "run", "start"]
-    networks:
-      - internal
-      - external
   exchange:
     volumes:
       - ./Services/Exchange/src:/usr/src/app/src
       - ./Services/Exchange/index.ts:/usr/src/app/index.ts
       - ./Services/Exchange/.env:/usr/src/app/.env
     command: ["npm", "run", "start"]
-    networks:
-      - internal
   users:
     volumes:
       - ./Services/Users/src:/usr/src/app/src
       - ./Services/Users/index.ts:/usr/src/app/index.ts
+    env_file:
+      - ./BuildingBlocks/Envs/database.dev.env
     command: ["npm", "run", "start"]
-    networks:
-      - internal
   web:
     build:
       context: ./Web
@@ -36,8 +31,14 @@ services:
       - 3000:3000
     networks:
       - external
-networks:
-  internal:
-    name: internal
-  external:
-    name: external
+  database:
+    image: postgres
+    volumes:
+      - ./DevTemp/Database:/var/lib/postgresql/data
+    env_file:
+      - ./BuildingBlocks/Envs/database.dev.env
+  adminer:
+    image: adminer
+    restart: on-failure
+    ports:
+      - 8080:8080

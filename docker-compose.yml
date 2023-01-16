@@ -7,6 +7,9 @@ services:
       args:
         port: 8080
         service_path: ApiGateway
+    networks:
+      - internal
+      - external
   exchange:
     build:
       context: .
@@ -14,6 +17,8 @@ services:
       args:
         port: 9000
         service_path: Services/Exchange
+    networks:
+      - internal
   users:
     build:
       context: .
@@ -21,3 +26,10 @@ services:
       args:
         port: 9001
         service_path: Services/Users
+    networks:
+      - internal
+networks:
+  internal:
+    name: internal
+  external:
+    name: external
