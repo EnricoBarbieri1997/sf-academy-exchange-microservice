@@ -38,8 +38,12 @@ services:
       - ./DevTemp/Database:/var/lib/postgresql/data
     env_file:
       - ./BuildingBlocks/Envs/database.dev.env
+    networks:
+      - internal
   adminer:
     image: adminer
     restart: on-failure
     ports:
       - 8080:8080
+    networks:
+      - internal
