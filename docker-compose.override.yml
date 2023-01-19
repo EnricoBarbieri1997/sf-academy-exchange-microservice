@@ -33,6 +33,7 @@ services:
       - external
   database:
     build:
+      context: .
       dockerfile: ./BuildingBlocks/Docker/Dockerfile.database
     volumes:
       - ./DevTemp/Database:/var/lib/postgresql/data
