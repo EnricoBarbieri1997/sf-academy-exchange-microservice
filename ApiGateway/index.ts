@@ -69,6 +69,9 @@ initialize({
 			return true
 		}
 	},
+	operations: {
+		status,
+	}
 })
 
 app.use(function (err, req, res, next)
