@@ -50,25 +50,23 @@ async function exchangeFunction({ value, from, to }: ExchangeData): Promise<Exch
 }
 
 type ServiceImplementation = {
-	exchange: grpc.handleUnaryCall<ExchangeData, ExchangeResult>
-}
-
-const exchange: grpc.handleUnaryCall<ExchangeData, ExchangeResult> = async (call, callback) => {
-	try
-	{
-		const exchangeRate = await exchangeFunction(call.request)
-		callback(null, exchangeRate)
-	}
-	catch(error)
-	{
-		callback({
-			code: grpc.status.FAILED_PRECONDITION,
-		})
-	}
+	Exchange: grpc.handleUnaryCall<ExchangeData, ExchangeResult>
 }
 
 const implementation: ServiceImplementation = {
-	exchange
+	Exchange: async (call, callback) => {
+		try
+		{
+			const exchangeRate = await exchangeFunction(call.request)
+			callback(null, exchangeRate)
+		}
+		catch(error)
+		{
+			callback({
+				code: grpc.status.FAILED_PRECONDITION,
+			})
+		}
+	}
 }
 
 server.addService(exchangeService.Exchange.service, implementation)
