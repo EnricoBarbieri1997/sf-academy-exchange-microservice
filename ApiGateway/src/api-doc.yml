@@ -1,0 +1,70 @@
+openapi: 3.0.0
+info:
+  title: sf-academy exchanger public api
+  version: '3.0.0'
+components:
+  securitySchemes:
+    Token:
+      name: authorization
+      in: header
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    OperationStatus:
+      type: boolean
+    Login:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+    User:
+      type: object
+      properties:
+        name:
+          type: string
+        iban:
+          type: string
+    SignUpParam:
+      allOf:
+        - $ref: '#/components/schemas/Login'
+        - $ref: '#/components/schemas/User'
+    LoginResponse:
+      type: string
+    Amount:
+      type: object
+      properties:
+        value:
+          type: number
+        currency:
+          type: string
+    BuyParam:
+      type: object
+      properties:
+        from:
+          $ref: '#/components/schemas/Amount'
+        to:
+          type: string
+    Transaction:
+      type: object
+      properties:
+        spent:
+          $ref: '#/components/schemas/Amount'
+        gained:
+          $ref: '#/components/schemas/Amount'
+        timestamp:
+          type: string
+    Transactions:
+      type: array
+      items:
+        $ref: '#/components/schemas/Transaction'
+  parameters:
+    UserId:
+      name: id
+      in: path
+      description: id to be passed in path
+      required: true
+      schema:
+        type: number
