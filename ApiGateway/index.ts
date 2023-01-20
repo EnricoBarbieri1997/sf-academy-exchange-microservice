@@ -13,6 +13,7 @@ import {POST as login} from "./src/api-routes/login"
 import {POST as signUp} from "./src/api-routes/sign-up"
 import {POST as deposit} from "./src/api-routes/deposit"
 import {POST as withdraw} from "./src/api-routes/withdraw"
+import {POST as buy} from "./src/api-routes/buy"
 
 const app = express()
 
