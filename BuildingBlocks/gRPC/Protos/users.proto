@@ -5,9 +5,9 @@ package exchange;
 service Users {
 	rpc SignUp(SignUpData) returns (OperationOutcome) {}
 	rpc Login(LoginData) returns (LoginResponse) {}
-	rpc Deposit(Amount) returns (OperationOutcome) {}
-	rpc Withdraw(SignUpData) returns (OperationOutcome) {}
-	rpc Buy(SignUpData) returns (OperationOutcome) {}
+	rpc Deposit(DepositData) returns (OperationOutcome) {}
+	rpc Withdraw(WithdrawData) returns (OperationOutcome) {}
+	rpc Buy(BuyData) returns (OperationOutcome) {}
 	rpc ListTransactions(TransactionListFilters) returns (TransactionList) {}
 }
 
@@ -26,7 +26,7 @@ message LoginData {
 }
 
 message LoginResponse {
-	string token = 1;
+	int32 id = 1;
 }
 
 message SignUpData {
@@ -39,16 +39,34 @@ message Amount {
 	string currency = 2;
 }
 
+message DepositData {
+	int32 user = 1;
+	Amount amount = 2;
+}
+
+message WithdrawData {
+	int32 user = 1;
+	Amount amount = 2;
+}
+
 message BuyData {
-	Amount from = 1;
-	string to = 2;
+	int32 user = 1;
+	Amount from = 2;
+	string to = 3;
 }
 
 message TransactionListFilters {
-	string date = 1;
-	string currency = 2;
+	int32 user = 1;
+	string date = 2;
+	string currency = 3;
+}
+
+message Transaction {
+	Amount spent = 1;
+	Amount gained = 2;
+	string timestamp = 3;
 }
 
 message TransactionList {
-	repeated BuyData transactions = 1;
+	repeated Transaction transactions = 1;
 }
