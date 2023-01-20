@@ -1,4 +1,4 @@
-FROM node:18
+FROM node:18 as base
 
 ARG service_path=.
 ARG port
@@ -18,7 +18,10 @@ RUN find $PROTO_PATH -type f -name "*.proto" -exec \
 	npx proto-loader-gen-types --longs=String --enums=String --defaults --oneofs --grpcLib=@grpc/grpc-js --outDir="$TYPESCRIPT_TYPES_PATH" "{}" \;
 
 COPY "./$service_path/index.ts" .
-COPY "./$service_path/src" .
+COPY "./$service_path/src" ./src
 
 EXPOSE $port
 CMD ["npm", "run", "prod"]
+
+FROM base as tsconfig
+COPY "./$service_path/tsconfig.json" .

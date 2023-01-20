@@ -4,6 +4,7 @@ services:
     build:
       context: .
       dockerfile: BuildingBlocks/Docker/Dockerfile.service
+      target: tsconfig
       args:
         port: 8080
         service_path: ApiGateway
@@ -14,6 +15,7 @@ services:
     build:
       context: .
       dockerfile: BuildingBlocks/Docker/Dockerfile.service
+      target: base
       args:
         port: 9000
         service_path: Services/Exchange
@@ -23,6 +25,7 @@ services:
     build:
       context: .
       dockerfile: BuildingBlocks/Docker/Dockerfile.service
+      target: base
       args:
         port: 9001
         service_path: Services/Users
