@@ -117,3 +117,76 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/LoginResponse'
+  /deposit:
+    post:
+      operationId: deposit
+      description: Deposit a certain amount of a currency
+      requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Amount'
+      responses:
+        200:
+          description: Status of the request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationStatus'
+      security:
+        -
+          Token: []
+  /withdraw:
+    post:
+      operationId: withdraw
+      description: Withdraw a certain amount of a currency
+      requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Amount'
+      responses:
+        200:
+          description: Status of the request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationStatus'
+      security:
+        -
+          Token: []
+  /buy:
+    post:
+      operationId: buy
+      description: Buy a certain amount of a currency from another
+      requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BuyParam'
+      responses:
+        200:
+          description: Status of the request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationStatus'
+      security:
+        -
+          Token: []
+  /transactions/list/{id}:
+    get:
+      operationId: listTransactions
+      description: List all the transactions of a certain user
+      parameters:
+        - $ref: '#/components/parameters/UserId'
+      responses:
+        200:
+          description: The user transactions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transaction'

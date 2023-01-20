@@ -14,6 +14,7 @@ import {POST as signUp} from "./src/api-routes/sign-up"
 import {POST as deposit} from "./src/api-routes/deposit"
 import {POST as withdraw} from "./src/api-routes/withdraw"
 import {POST as buy} from "./src/api-routes/buy"
+import {GET as listTransactions} from "./src/api-routes/transactions/list/{id}"
 
 const app = express()
 
@@ -81,6 +82,7 @@ initialize({
 		deposit,
 		withdraw,
 		buy,
+		listTransactions,
 	}
 })
 
