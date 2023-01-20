@@ -10,7 +10,7 @@ docker-compose -f docker-compose.database-setup.yml up
 
 which creates the default `Exchanger` database and creates the table using the `./BuildingBlocks/Database/latest_schema.sql` file
 
-## Sdk Generation
+## Sdk and documentation generation
 To generate the Javascript SDK from the OpenAPI doc using
 
 ```shell
