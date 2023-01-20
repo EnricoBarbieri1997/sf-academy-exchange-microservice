@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  codegen:
+    image: parsertongue/swagger-codegen-cli
+    volumes:
+      - ./ApiGateway/src:/in
+      - ./DevTemp/Sdk:/out
+    command: ["generate", "-i", "/in/api-doc.yml", "-l", "javascript", "-o", "/out"]
