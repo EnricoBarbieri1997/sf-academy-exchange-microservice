@@ -2,6 +2,9 @@ openapi: 3.0.0
 info:
   title: sf-academy exchanger public api
   version: '3.0.0'
+servers:
+  - url: http://api
+    description: Development server
 components:
   securitySchemes:
     Token:
