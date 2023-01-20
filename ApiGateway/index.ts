@@ -11,6 +11,8 @@ import * as protoLoader from '@grpc/proto-loader'
 import {GET as status} from "./src/api-routes/status"
 import {POST as login} from "./src/api-routes/login"
 import {POST as signUp} from "./src/api-routes/sign-up"
+import {POST as deposit} from "./src/api-routes/deposit"
+import {POST as withdraw} from "./src/api-routes/withdraw"
 
 const app = express()
 
