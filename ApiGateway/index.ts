@@ -8,6 +8,7 @@ import jwt, { Jwt } from "jsonwebtoken"
 import * as grpc from '@grpc/grpc-js'
 import * as protoLoader from '@grpc/proto-loader'
 
+import {GET as status} from "./src/api-routes/status"
 
 const app = express()
 

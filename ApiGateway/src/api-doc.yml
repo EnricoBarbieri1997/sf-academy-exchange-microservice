@@ -68,3 +68,18 @@ components:
       required: true
       schema:
         type: number
+paths:
+  /status:
+    get:
+      operationId: status
+      description: Status page
+      responses:
+        200:
+          description: A status page
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
