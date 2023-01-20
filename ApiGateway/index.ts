@@ -76,6 +76,11 @@ initialize({
 	},
 	operations: {
 		status,
+		login,
+		signUp,
+		deposit,
+		withdraw,
+		buy,
 	}
 })
 
