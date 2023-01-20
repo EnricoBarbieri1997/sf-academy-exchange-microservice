@@ -39,6 +39,7 @@ services:
     build:
       context: .
       dockerfile: ./BuildingBlocks/Docker/Dockerfile.database
+      target: base
     volumes:
       - ./DevTemp/Database:/var/lib/postgresql/data
     env_file:

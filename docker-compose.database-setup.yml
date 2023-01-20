@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  database:
+    build:
+      context: .
+      dockerfile: ./BuildingBlocks/Docker/Dockerfile.database
+      target: initialization
+    volumes:
+      - ./DevTemp/Database:/var/lib/postgresql/data
+      - ./BuildingBlocks/Database/Initialization:/docker-entrypoint-initdb.d
+    env_file:
+      - ./BuildingBlocks/Envs/database.dev.env

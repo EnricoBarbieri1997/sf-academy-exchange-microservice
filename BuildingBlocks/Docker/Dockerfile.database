@@ -1,3 +1,6 @@
-FROM postgres
+FROM postgres as base
 
 ENTRYPOINT [ "bash", "-c", "POSTGRES_USER=$DATABASE_USER POSTGRES_PASSWORD=$DATABASE_PASSWORD docker-entrypoint.sh postgres" ]
+
+FROM base as initialization
+ENV POSTGRES_DB Exchanger
