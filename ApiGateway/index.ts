@@ -9,6 +9,8 @@ import * as grpc from '@grpc/grpc-js'
 import * as protoLoader from '@grpc/proto-loader'
 
 import {GET as status} from "./src/api-routes/status"
+import {POST as login} from "./src/api-routes/login"
+import {POST as signUp} from "./src/api-routes/sign-up"
 
 const app = express()
 

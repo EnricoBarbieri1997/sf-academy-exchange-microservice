@@ -83,3 +83,37 @@ paths:
                 properties:
                   status:
                     type: string
+  /sign-up:
+    post:
+      operationId: signUp
+      description: Register a new user
+      requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignUpParam'
+      responses:
+        200:
+          description: Status of the request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationStatus'
+  /login:
+    post:
+      operationId: login
+      description: Login a user
+      requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Login'
+      responses:
+        200:
+          description: JWT Token to use in authentication header for future requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
