@@ -24,8 +24,11 @@ services:
     command: ["npm", "run", "start"]
   web:
     build:
-      context: ./Web
-      dockerfile: ./Dockerfile
+      context: .
+      dockerfile: ./BuildingBlocks/Docker/Dockerfile.web
+      args:
+        project_path: Web
+        sdk_path: DevTemp/Sdk
     volumes:
       - ./Web/pages:/usr/src/app/pages
       - ./Web/public:/usr/src/app/public

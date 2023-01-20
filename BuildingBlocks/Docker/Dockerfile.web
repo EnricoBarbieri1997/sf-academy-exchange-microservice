@@ -1,0 +1,17 @@
+FROM node:18
+
+ARG project_path=.
+ARG sdk_path=./Sdk
+
+WORKDIR /usr/src/app
+
+COPY "./$project_path/package.json" ./
+RUN npm install
+
+COPY "./$project_path/." .
+
+COPY "./$sdk_path/." ./sdk
+RUN npm link ./sdk
+
+RUN npm run build
+CMD ["npm", "run", "start"]
