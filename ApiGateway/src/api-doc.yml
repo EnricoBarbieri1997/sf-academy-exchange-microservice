@@ -3,7 +3,7 @@ info:
   title: sf-academy exchanger public api
   version: '3.0.0'
 servers:
-  - url: http://api
+  - url: http://api:8080
     description: Development server
 components:
   securitySchemes:
@@ -192,4 +192,4 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Transaction'
+                $ref: '#/components/schemas/Transactions'
