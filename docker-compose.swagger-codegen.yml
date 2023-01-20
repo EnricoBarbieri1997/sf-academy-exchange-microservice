@@ -1,8 +1,30 @@
 version: '3.8'
 services:
-  codegen:
-    image: parsertongue/swagger-codegen-cli
+  codegen-sdk:
+    build:
+      context: ./BuildingBlocks/Docker/Dockerfile.sdk-gen
+      dockerfile: Dockerfile
     volumes:
       - ./ApiGateway/src:/in
       - ./DevTemp/Sdk:/out
-    command: ["generate", "-i", "/in/api-doc.yml", "-l", "javascript", "-o", "/out"]
+    command:
+      - generate
+      - "-i"
+      - /in/api-doc.yml
+      - "-g"
+      - typescript-axios
+      - "-o"
+      - /out
+  codegen-docs:
+    image: parsertongue/swagger-codegen-cli
+    volumes:
+      - ./ApiGateway/src:/in
+      - ./DevTemp/Docs:/out
+    command:
+      - generate
+      - "-i"
+      - /in/api-doc.yml
+      - "-l"
+      - html2
+      - "-o"
+      - /out
