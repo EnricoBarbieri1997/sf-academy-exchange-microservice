@@ -5,6 +5,10 @@ services:
       - ./ApiGateway/src:/usr/src/app/src
       - ./ApiGateway/index.ts:/usr/src/app/index.ts
     command: ["npm", "run", "start"]
+    env_file:
+      - ./BuildingBlocks/Envs/jwt.dev.env
+    ports:
+      - 8000:8080
   exchange:
     volumes:
       - ./Services/Exchange/src:/usr/src/app/src
