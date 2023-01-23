@@ -29,6 +29,8 @@ services:
       args:
         project_path: Web
         sdk_path: DevTemp/Sdk
+    env_file:
+      - ./BuildingBlocks/Envs/exchanger.env
     volumes:
       - ./Web/helpers:/usr/src/app/helpers
       - ./Web/pages:/usr/src/app/pages
