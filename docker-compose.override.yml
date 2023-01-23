@@ -30,7 +30,9 @@ services:
         project_path: Web
         sdk_path: DevTemp/Sdk
     volumes:
+      - ./Web/helpers:/usr/src/app/helpers
       - ./Web/pages:/usr/src/app/pages
+      - ./Web/components:/usr/src/app/components
       - ./Web/public:/usr/src/app/public
       - ./Web/styles:/usr/src/app/styles
     command: ["npm", "run", "dev"]
