@@ -230,7 +230,8 @@ postgresClient.connect().then(() =>
 			values: parameters, 
 		}
 
-		const transactions = (await postgresClient.query(query)).rows
+		const queryResult = await postgresClient.query(query)
+		const transactions = queryResult.rowCount > 0 ? queryResult.rows : []
 		return {
 			transactions: transactions.map(t => ({
 				spent:
