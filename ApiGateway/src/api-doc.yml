@@ -180,6 +180,20 @@ paths:
       security:
         -
           Token: []
+  /transactions/list:
+    get:
+      operationId: listTransactionsLogged
+      description: List all the transactions of the logged user
+      responses:
+        200:
+          description: The user transactions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transactions'
+      security:
+        -
+          Token: []
   /transactions/list/{id}:
     get:
       operationId: listTransactions
