@@ -20,8 +20,8 @@ $current="${PWD}"
 mkdir "$outputfolder/src"
 cd $outputfolder
 # find ./ -maxdepth 1 -mindepth 1 -exec mv -t "$outputfolder/src" {} +
-mv /build_tmp/package.json ./package.json
-mv /build_tmp/tsconfig.json ./tsconfig.json
+mv /build_files/package.json ./package.json
+mv /build_files/tsconfig.json ./tsconfig.json
 
 npm install typescript
 npm install axios@1.2.2
