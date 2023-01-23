@@ -1,6 +1,6 @@
 import { Button, Card } from 'flowbite-react'
 import Head from 'next/head'
-import Image from 'next/image'
+import CenteredContent from '../components/CenteredContent'
 
 export default function Home() {
   return (
@@ -12,13 +12,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div className="h-screen w-screen flex justify-center items-center">
+        <CenteredContent>
           <Card className='p-8'>
             <h1 className='text-2xl'>Login or SignUp</h1>
             <Button href='/login'>Login</Button>
             <Button href='/signup'>Signup</Button>
           </Card>
-        </div>
+        </CenteredContent>
       </main>
     </>
   )
