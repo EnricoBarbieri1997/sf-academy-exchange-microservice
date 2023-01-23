@@ -155,7 +155,7 @@ postgresClient.connect().then(() =>
 		if(amount?.currency === undefined) throw "Missing currency paramter"
 
 		const userBalances = await balances(user)
-		const canWithdraw = userBalances.get(amount.currency) ?? 0 >= amount.value
+		const canWithdraw = (userBalances.get(amount.currency) ?? 0) >= amount.value
 
 		if(!canWithdraw) throw "Insufficient funds"
 
