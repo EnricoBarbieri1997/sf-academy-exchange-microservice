@@ -17,7 +17,6 @@
 	},
 	"dependencies": {
 		"@grpc/grpc-js": "^1.8.3",
-		"dotenv": "^16.0.3",
 		"xml-js": "^1.6.11"
 	}
 }

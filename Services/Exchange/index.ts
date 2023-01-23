@@ -1,14 +1,11 @@
 import * as grpc from '@grpc/grpc-js'
 import * as protoLoader from '@grpc/proto-loader'
-import * as dotenv from "dotenv"
 import { join } from "path"
 import { env } from "process"
 import * as https from "https"
 import { xml2js } from 'xml-js'
 import { ExchangeData } from "./gRPC/Typescript/exchange/ExchangeData"
 import { ExchangeResult } from "./gRPC/Typescript/exchange/ExchangeResult"
-
-dotenv.config()
 
 if (env.EUROPE_BANK_EXCHANGE_URL === undefined) throw "Missing europe bank data url"
 const europeBankUrl = env.EUROPE_BANK_EXCHANGE_URL
@@ -71,6 +68,6 @@ const implementation: ServiceImplementation = {
 
 server.addService(exchangeService.Exchange.service, implementation)
 
-server.bindAsync('0.0.0.0:' + (process.env.PORT ?? "9000"), grpc.ServerCredentials.createInsecure(), () => {
+server.bindAsync('0.0.0.0:' + (env.PORT ?? "9000"), grpc.ServerCredentials.createInsecure(), () => {
 	server.start()
 })
