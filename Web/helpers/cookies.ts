@@ -1,4 +1,4 @@
-import { NextPageContext } from "next"
+import { NextApiRequest, NextPageContext } from "next"
 
 export function getCookie(cookies: string, name: string)
 {
@@ -12,4 +12,9 @@ export function getCookie(cookies: string, name: string)
 export function getCookieFromContext(context: NextPageContext, name: string)
 {
 	return context.req && context.req.headers.cookie ? getCookie(context.req.headers.cookie, name) : ""
+}
+
+export function getCookieFromReq(req: NextApiRequest, name: string)
+{
+	return req.cookies[name]?.trimEnd()
 }
