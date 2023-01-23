@@ -19,6 +19,8 @@ services:
       args:
         port: 9000
         service_path: Services/Exchange
+    env_file:
+      - ./BuildingBlocks/Envs/exchanger.env
     networks:
       - internal
   users:
